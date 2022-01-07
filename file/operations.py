@@ -3,7 +3,7 @@
 """This module includes methods to handle file operations."""
 __name__ = 'file.operations'
 __author__ = 'Deniz Iren (deniziren@gmail.com)'
-__version__ = '0.002'
+__version__ = '0.004'
 __lastupdate__ = '07.01.2021'
 
 def version():
