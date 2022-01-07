@@ -7,7 +7,7 @@ This library includes Python packages that are developed by CAROU scientists.
 This package includes methods for common file operations. 
 
 #### getFileList
-getFileList(directoryPath, fileType='*')
+getFileList(directoryPath, fileType='*') 
 
 __Inputs__
 * directoryPath: The path of the directory to fetch the file names from. 
