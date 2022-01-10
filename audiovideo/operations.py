@@ -155,9 +155,17 @@ def convert_audio_video(video_input, video_output):
         print('File not found!') 
         return -1
     try:
-        # cmds = ['ffmpeg', '-i', video_input, video_output]
-        cmds = ['ffmpeg', '-i', video_input, '-ac', '1', '-ar', '16000', video_output] # we should probably make these values parametric when we need to change them. 
-        subprocess.Popen(cmds)
+        cmds = ['ffmpeg', '-i', video_input, video_output]
+        
+        ## this is how you specify a codec. In the future, we can make this call parametric and use something like the following. 
+        #cmds = ['ffmpeg', '-i', video_input, '-ac', '1', '-ar', '16000', video_output] # we should probably make these values parametric when we need to change them. 
+        
+        # Note that we use sbprocess.call instead of subprocess.Popen. 
+        # The reason is that .call blocks the process until the external operation (ffmpeg conversion in this case) finishes. 
+        # If we do not block, then the following code which relies on the converted file will attempt to execute before the file is ready. 
+        # So, block away...
+        subprocess.call(cmds)
+        
         print('Conversion complete: ', video_output)
         return(video_output)
     except Exception as e:
